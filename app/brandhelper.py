@@ -4,12 +4,13 @@ import openai
 import argparse
 import re
 from dotenv import load_dotenv
+from pathlib import Path
 
 MAX_INPUT_LENGTH = 32
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Copykitt')
+    parser = argparse.ArgumentParser(description='Brand Helper')
     parser.add_argument('--input', "-i", type=str,
                         required=True, help='Input text')
     args = parser.parse_args()
@@ -24,6 +25,7 @@ def main():
 
 def generate_branding_snippet(prompt: str) -> str:
     # Load your API key from an environment variable or secret management service
+    load_dotenv(Path(".env"))
     openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate upbeat branding snippet for {prompt}: "
     print(enriched_prompt)
@@ -53,6 +55,7 @@ def validate_length(prompt: str) -> bool:
 
 def generate_keywords(prompt: str) -> List[str]:
     # Load your API key from an environment variable or secret management service
+    load_dotenv(Path(".env"))
     openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate related branding keywords for {prompt}: "
     print(enriched_prompt)

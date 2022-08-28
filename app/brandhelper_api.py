@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from copykitt import generate_branding_snippet, generate_keywords
+from brandhelper import generate_branding_snippet, generate_keywords
 from mangum import Mangum
 from fastapi.middleware.cors import CORSMiddleware
 
